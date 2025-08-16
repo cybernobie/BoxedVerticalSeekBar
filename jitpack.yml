@@ -1,0 +1,7 @@
+jdk:
+  - openjdk11
+before_install:
+  - ./scripts/prepareJitpackEnvironment.sh
+install:
+  - FILE="-Dfile=BoxedVerticalSeekBarLib/build/outputs/aar/BoxedVerticalSeekBarLib-release.aar"
+  - mvn install:install-file $FILE -DgroupId=com.github.alpbak -DartifactId=BoxedVerticalSeekBar -Dversion=1.1.2 -Dpackaging=aar -DgeneratePom=true
