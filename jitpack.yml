@@ -1,7 +1,10 @@
 jdk:
-  - openjdk11
+  - openjdk8
 before_install:
+  - chmod +x gradlew
+  - chmod +x scripts/prepareJitpackEnvironment.sh
   - ./scripts/prepareJitpackEnvironment.sh
 install:
-  - FILE="-Dfile=BoxedVerticalSeekBarLib/build/outputs/aar/BoxedVerticalSeekBarLib-release.aar"
-  - mvn install:install-file $FILE -DgroupId=com.github.alpbak -DartifactId=BoxedVerticalSeekBar -Dversion=1.1.2 -Dpackaging=aar -DgeneratePom=true
+  - ./gradlew clean
+  - ./gradlew build
+  - ./gradlew BoxedVerticalSeekBarLib:publishToMavenLocal
